@@ -45,6 +45,8 @@ def main():
     zenjiend = (3, 3)
 
     path = astarzenji(zenjifield, zenjistart, zenjiend)
+    print("Zenji, path to goal:")
+    print(path)
 
 
 if __name__ == '__main__':
