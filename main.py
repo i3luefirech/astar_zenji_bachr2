@@ -1,31 +1,11 @@
-from astar import astar, astarzenji
+from astar import astarzenji
 
 
 def main():
 
     print()
-
-    maze = [[0, 0, 0, 0, 1, 0, 0, 0, 0, 0],
-            [0, 0, 0, 0, 1, 0, 0, 0, 0, 0],
-            [0, 0, 0, 0, 1, 0, 0, 0, 0, 0],
-            [0, 0, 0, 0, 1, 0, 0, 0, 0, 0],
-            [0, 0, 0, 0, 1, 0, 0, 0, 0, 0],
-            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-            [0, 0, 0, 0, 1, 0, 0, 0, 0, 0],
-            [0, 0, 0, 0, 1, 0, 0, 0, 0, 0],
-            [0, 0, 0, 0, 1, 0, 0, 0, 0, 0],
-            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]]
-
-    start = (0, 0)
-    end = (7, 6)
-
-    path = astar(maze, start, end)
-    print("Maze Example, path to goal:")
-    print(path)
-    print()
-    print()
     print("********************************************************************************")
-    print("** Zenji")
+    print("** Zenji A* start                                                             **")
     print("********************************************************************************")
     print()
 
@@ -43,10 +23,23 @@ def main():
     # x, y, rot
     zenjistart = (0, 0)
     zenjiend = (3, 3)
+    print()
+    print("Zenji, field:")
+    for line in zenjifield:
+        print(line)
+    print()
 
     path = astarzenji(zenjifield, zenjistart, zenjiend)
-    print("Zenji, path to goal:")
-    print(path)
+    print()
+    print("Zenji, path to goal ( position ( x, y ), rotation ):")
+    for node in path:
+        print(node)
+    print()
+
+    print("********************************************************************************")
+    print("** Zenji A* end                                                               **")
+    print("********************************************************************************")
+    print()
 
 
 if __name__ == '__main__':
