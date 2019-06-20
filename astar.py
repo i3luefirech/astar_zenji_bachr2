@@ -52,7 +52,9 @@ def astarzenji(field, start, end):
     open_list.append(start_node)
 
     print()
-    print("start A *")
+    print("********************************************************************************")
+    print("** Zenji A* calculation start                                                 **")
+    print("********************************************************************************")
     print()
 
     # Loop until you find the end
@@ -85,6 +87,11 @@ def astarzenji(field, start, end):
                 path.append((current.position, current.rotpos))
                 current = current.parent
             print("created path")
+            print()
+            print("********************************************************************************")
+            print("** Zenji A* calculation end                                                   **")
+            print("********************************************************************************")
+            print()
             return path[::-1]
             # Return reversed path
 
