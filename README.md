@@ -26,7 +26,7 @@ Beispiel des Koordinatensystems der Karte:
 
 Eine Karte besteht aus einem, auf n mal m Feldern (n x m == Reihen x Kollonen) ausgelegten, Röhrensystem. Jedes der Felder (ausser Start und Endpunkt) können im Uhrzeigersinn gedreht werden.
 
-Die Beispielmap aus dem Projekt (Definition der Tür(N,O,S,W): Eingang, Ausgang, Blockade, Quelle, Ablauf):
+Die Beispielmap aus dem Projekt (Definition der Tür (N, O, S, W): Blockade, Eingang, Ausgang, Quelle, Ablauf):
 
 | n x m  | 0 | 1  | 2 | 3 |
 | --- | --- | --- | --- | --- |
