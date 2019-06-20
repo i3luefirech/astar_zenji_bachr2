@@ -2,7 +2,10 @@ from node import ZenjiNode
 
 
 def checkhasexit(node=None, direction=None):
-    print("check exit: " + str(node.blockrot[node.rotpos][direction]))
+    print("node: " + str(node.blockrot))
+    print("direction: " + str(direction))
+    print("rotpos: " + str(node.rotpos))
+    print("check exit: " + str(node.blockrot[node.rotpos][direction]) + " == 2")
     if node.blockrot[node.rotpos][direction] == 2:
         return True
     else:
@@ -88,22 +91,21 @@ def astarzenji(field, start, end):
         # Generate children
         print("generate children list")
         children = []
-        direction = 0
         print("check adjacent squares")
-        # Adjacent squares west north east south
-        for new_position in [(0, -1), (1, 0), (0, 1), (-1, 0)]:
+        # Adjacent squares n,e,s,w
+        for direction in [0, 1, 2, 3]:
 
             # Get node position
-            if new_position == (-1, 0):
-                direction = 2
-            elif new_position == (0, 1):
-                direction = 1
-            elif new_position == (0, -1):
-                direction = 3
-            node_position = (current_node.position[0] + new_position[0], current_node.position[1] + new_position[1])
-
-            # Make sure within range
-            if node_position[0] > (len(field) - 1) or node_position[0] < 0 or node_position[1] > (len(field[len(field)-1]) -1) or node_position[1] < 0:
+            if direction == 0:
+                node_position = (current_node.position[0]-1, current_node.position[1])
+            elif direction == 1:
+                node_position = (current_node.position[0], current_node.position[1]+1)
+            elif direction == 2:
+                node_position = (current_node.position[0]+1, current_node.position[1])
+            elif direction == 3:
+                node_position = (current_node.position[0], current_node.position[1]-1)
+            # check range
+            if node_position[0] < 0 or node_position[1] < 0 or node_position[0] >= len(field) or node_position[1] >= len(field[0]):
                 print("out of range")
                 continue
 
@@ -121,6 +123,7 @@ def astarzenji(field, start, end):
                     print("add child")
                     new_node.rotpos = entry
                     children.append(new_node)
+                    new_node = ZenjiNode(current_node, node_position, field[node_position[0]][node_position[1]])
 
         # Loop through children
         for child in children:
