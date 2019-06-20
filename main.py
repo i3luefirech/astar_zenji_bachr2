@@ -7,19 +7,21 @@ def main():
     # values:   0 = block
     #           1 = entry
     #           2 = exit
-    #           3 = source
-    #           4 = goal
+    #           3 = source (water input, no rotation)
+    #           4 = goal (water outlet, no rotation)
     zenjifield = [[[3, 2, 2, 3], [2, 0, 1, 0], [1, 2, 2, 1], [0, 0, 0, 0]],
                   [[0, 0, 0, 0], [0, 0, 1, 2], [0, 1, 2, 2], [0, 0, 2, 1]],
                   [[0, 0, 2, 1], [1, 0, 2, 0], [1, 2, 1, 2], [0, 1, 0, 2]],
                   [[1, 2, 0, 0], [1, 2, 0, 1], [1, 2, 0, 0], [1, 4, 4, 1]]]
 
-    # x, y, rot
+    # row, column
     zenjistart = (0, 0)
     zenjiend = (3, 3)
 
+    # calculate a*
     path = astarzenji(zenjifield, zenjistart, zenjiend)
 
+    # map and path output
     print("********************************************************************************")
     print("** Zenji start                                                                **")
     print("********************************************************************************")

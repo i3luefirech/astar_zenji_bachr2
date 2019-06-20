@@ -1,20 +1,26 @@
 from node import ZenjiNode
 
 
+# checks if a node has a exit in this direction
 def checkhasexit(node=None, direction=None):
+    # debug output
     print("node: " + str(node.blockrot))
     print("direction: " + str(direction))
     print("rotpos: " + str(node.rotpos))
     print("check exit: " + str(node.blockrot[node.rotpos][direction]) + " == 2")
+    # 2 == exit
     if node.blockrot[node.rotpos][direction] == 2:
         return True
     else:
         return False
 
 
+# checks if a node has an entry on our opposite direction
 def checkhasentries(node, direction):
     entries = []
     count = 0
+
+    # get opposite direction
     childdir = 0
     if direction == 0:
         childdir = 2
@@ -24,8 +30,12 @@ def checkhasentries(node, direction):
         childdir = 0
     if direction == 3:
         childdir = 1
+
+    # check all rotations for entries
     for block in node.blockrot:
+        # debug output
         print("check entry: " + str(block[childdir]))
+        # 1 == entry
         if block[childdir] == 1:
             entries.append(count)
         count += 1
@@ -61,43 +71,52 @@ def astarzenji(field, start, end):
     while len(open_list) > 0:
 
         # Get the current node
+        # debug output
         print("load first in open list")
         current_node = open_list[0]
         current_index = 0
+        # Loop open list
         for index, item in enumerate(open_list):
+            # debug output
             print("check for smaller f " + str(item.f) + " < " + str(current_node.f))
             if item.f < current_node.f:
                 current_node = item
                 current_index = index
+                # debug output
                 print("get better node from open list")
 
+        # debug output
         print("workingnode: "+str(current_node.position)+","+str(current_node.rotpos))
 
         # Pop current off open list, add to closed list
         open_list.pop(current_index)
         closed_list.append(current_node)
+        # debug output
         print("added closed list")
 
         # Found the goal
         if current_node == end_node:
-            print("found end")
             path = []
             current = current_node
+            # create the path
             while current is not None:
                 path.append((current.position, current.rotpos))
                 current = current.parent
+            # debug output
             print("created path")
             print()
             print("********************************************************************************")
             print("** Zenji A* calculation end                                                   **")
             print("********************************************************************************")
             print()
-            return path[::-1]
             # Return reversed path
+            return path[::-1]
 
         # Generate children
+        # debug output
         print("generate children list")
         children = []
+        # debug output
         print("check adjacent squares")
         # Adjacent squares n,e,s,w
         for direction in [0, 1, 2, 3]:
@@ -113,12 +132,15 @@ def astarzenji(field, start, end):
                 node_position = (current_node.position[0], current_node.position[1]-1)
             # check range
             if node_position[0] < 0 or node_position[1] < 0 or node_position[0] >= len(field) or node_position[1] >= len(field[0]):
+                # debug output
                 print("out of range")
                 continue
 
+            # debug output
             print("check exit")
             # check node has exit
             if checkhasexit(current_node, direction):
+                # debug output
                 print("create child")
                 # Create new node
                 new_node = ZenjiNode(current_node, node_position, field[node_position[0]][node_position[1]])
@@ -126,8 +148,9 @@ def astarzenji(field, start, end):
                 # check child has entry
                 entries = checkhasentries(new_node, direction)
                 for entry in entries:
-                    # Append
+                    # debug output
                     print("add child")
+                    # Append
                     new_node.rotpos = entry
                     children.append(new_node)
                     new_node = ZenjiNode(current_node, node_position, field[node_position[0]][node_position[1]])
@@ -141,14 +164,16 @@ def astarzenji(field, start, end):
                     continue
 
             # Create the f, g, and h values
+            child.g = current_node.g + 1 + current_node.rotpos + child.rotpos
+            child.h = 2 * ((end_node.position[0] - child.position[0]) + (end_node.position[1] - child.position[1]))
+            child.f = child.g + child.h
+
+            # debug output
             print("current_node.g: " + str(current_node.g))
             print("current_node.rotpos: " + str(current_node.rotpos))
             print("child.rotpos: " + str(child.rotpos))
-            child.g = current_node.g + 1 + current_node.rotpos + child.rotpos
             print("child.g: " + str(child.g))
-            child.h = 2 * ((end_node.position[0] - child.position[0]) + (end_node.position[1] - child.position[1]))
             print("child.h: " + str(child.h))
-            child.f = child.g + child.h
             print("child.f: " + str(child.f))
 
             # Child is already in the open list
