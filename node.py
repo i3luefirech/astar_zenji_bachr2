@@ -22,6 +22,11 @@ class ZenjiNode:
         self.h = 0
         self.f = 0
 
+        print("rotpos 0: " + str(self.blockrot[0]))
+        print("rotpos 1: " + str(self.blockrot[1]))
+        print("rotpos 2: " + str(self.blockrot[2]))
+        print("rotpos 3: " + str(self.blockrot[3]))
+
     def getblock(self):
         return self.blockrot[self.rotpos]
 
@@ -32,4 +37,4 @@ class ZenjiNode:
         return self.rotpos
 
     def __eq__(self, other):
-        return self.position == other.position
+        return self.position == other.position and self.rotpos == other.rotpos
