@@ -46,13 +46,15 @@ Beispiel eines Feldes welches in Position 0 im Norden und im Osten eine Blockade
 |   | 2 |   |
 
 Ein Feld besteht aus einem Teil des Röhrensystem, jedes Seite des Feldes ist entweder ein Eingang (1), Ausgang (2) oder eine Blockade (0).
-Im Spiel sind Zusätzlich noch der Wassereinlass (3)
+Im Spiel sind Zusätzlich noch der Wasserquelle (3) und Wasserablauf (4) definiert. Unser Beispielfeld würde mit folgenden Arraywerten erstellt: 0, 0, 2, 1
 
 ## A *
 
 TODO Schnellbeschreibung A *
 
 ### Speziell für Zenji
+
+Es wurden für Zenji kleinere Anpassungen gegenüber einem normalen A* Algorithmus angepasst.
 
 #### Generierung Kinderknoten
 
