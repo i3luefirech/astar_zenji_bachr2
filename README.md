@@ -33,9 +33,9 @@ Die Beispielmap aus dem Projekt
 
 | | | |
 | --- | --- | --- |
-| x | 0 | x |
-| 1 | x | 0 |
-| x | 2 | x |
+|   | 0 |   |
+| 1 |   | 0 |
+|   | 2 |   |
 
 Beispiel eines Feldes welches in Position 0 im Norden und im Osten eine Blockade hat, im Süden einen Ausgang und im Westen einen Eingang
 
