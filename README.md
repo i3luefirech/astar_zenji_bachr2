@@ -15,6 +15,8 @@ Verwenden Sie von Heuristiken. Beispielsweise wird für IDA* und A* eine Heurist
 
 ## Karte und Weg
 
+Beispiel des Koordinatensystems der Karte:
+
 | n x m  | 0 | 1  | 2 | 3 |
 | --- | --- | --- | --- | --- |
 | 0  | 0, 0  | 0, 1  | 0, 2  | 0, 3  |
@@ -22,22 +24,26 @@ Verwenden Sie von Heuristiken. Beispielsweise wird für IDA* und A* eine Heurist
 | 2  | 2, 0  | 2, 1  | 2, 2  | 2, 3  |
 | 3  | 3, 0  | 3, 1  | 3, 2  | 3, 3  |
 
-Beispiel des Koordinatensystems der Karte
-
 Eine Karte besteht aus einem, auf n mal m Feldern (n x m == Reihen x Kollonen) ausgelegten, Röhrensystem. Jedes der Felder (ausser Start und Endpunkt) können im Uhrzeigersinn gedreht werden.
 
-TODO Bild "echte" Karte
-Die Beispielmap aus dem Projekt
+Die Beispielmap aus dem Projekt (Definition der Tür(N,O,S,W): Eingang, Ausgang, Blockade, Quelle, Ablauf):
+
+| n x m  | 0 | 1  | 2 | 3 |
+| --- | --- | --- | --- | --- |
+| 0  | 3, 2, 2, 3 | 2, 0, 1, 0 | 1, 2, 2, 1 | 0, 0, 0, 0 |
+| 1  | 0, 0, 0, 0 | 0, 0, 1, 2 | 0, 1, 2, 2 | 0, 0, 2, 1 |
+| 2  | 0, 0, 2, 1 | 1, 0, 2, 0 | 1, 2, 1, 2 | 0, 1, 0, 2 |
+| 3  | 1, 2, 0, 0 | 1, 2, 0, 1 | 1, 2, 0, 0 | 1, 4, 4, 1 |
 
 ### Feld
+
+Beispiel eines Feldes welches in Position 0 im Norden und im Osten eine Blockade hat, im Süden einen Ausgang und im Westen einen Eingang
 
 | | | |
 | --- | --- | --- |
 |   | 0 |   |
 | 1 |   | 0 |
 |   | 2 |   |
-
-Beispiel eines Feldes welches in Position 0 im Norden und im Osten eine Blockade hat, im Süden einen Ausgang und im Westen einen Eingang
 
 Ein Feld besteht aus einem Teil des Röhrensystem, jedes Seite des Feldes ist entweder ein Eingang (1), Ausgang (2) oder eine Blockade (0).
 Im Spiel sind Zusätzlich noch der Wassereinlass (3)
