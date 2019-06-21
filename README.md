@@ -74,11 +74,32 @@ Der A* Algorithmus erklärt mit einem vereinfachten Struktogramm
 
 #### Generierung Kinderknoten
 
-TODO Schnellbeschreibung Kinder generieren
+Um alle Kinderknoten zu generieren überprüfen wir die Nachbarquadrate welche in allen Himmelsrichtungen anliegen. Anhand
+der Richtung können die Koordinaten des neuen Nodes berechnet werden. Norden = (-1, 0), Osten = (0, 1), Süden = (1, 0)
+und Westen (0, -1). Jetzt wird gecheckt, ob die neuen Koordinaten in unserem Spielffeld liegen, falls nicht, wird der
+Kindknoten ignoriert. Als nächstes wird überprüft, ob unser Knoten einen Ausgang in dieser Himmelsrichtung zur Verfügung
+hat. Trifft dies zu so wird der Kindnoten profisorisch erstellt. Jetzt werden alle Rotationspositionen des Kindknotens
+auf Eingägne überprüft. Wir merken uns alle Positionen mit Eingägnen. Für jede gefundene Eingangsposition wird ein
+Kindknoten erstellt. Diese Kindknoten werden jetzt weiterverarbeitet.
 
 #### Heuristik und Wegkosten (f() = g() + h())
 
+f() stellt den Kostenwert unseres Nodes in der aktuellen Rotationsposition dar. f() kann ganz einfach aus den
+Teilresultaten von g() und h() berechnet werden.
 
+f() = g() + h()
+
+g() ist die Funktion zum berechnen der bisherigen Wegkosten. Die Wegkosten des Elternknoten, plus eins für den Weg +
+die Rotation des Elternknotens sowie die Eigenrotation. Die Summe dieser Werte ergiebt unsere bisherigen Wegkosten.
+
+g() = Eltern.g + 1 + Eltern.rot + Kind.rot 
+
+h() stellt unsere Heuristikfunktion dar. Die Heuristikfunktion gibt uns einen ungefähren Wert für die noch offene
+Strecke zurück. Da in Zenji nicht Diagonal gefahren werden kann, können wir einen einfachen Richtwert erhalten indem wir
+die Differenzen von unseren X- und Y-Koordinaten und den Endkoordinaten rechnen und diese addieren. Da jetzt bisher noch
+mögliche Drehungen ignoriert wurden, wird der Wert verdoppelt.
+
+h() = 2 * (( Ziel.x - Kind.x ) + ( Ziel.y - Kind.y ))
 
 ## Quellen
 
