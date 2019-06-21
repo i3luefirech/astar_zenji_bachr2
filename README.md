@@ -69,6 +69,15 @@ h() stellt unsere Heuristik Funktion dar. Die Heuristik Funktion gibt uns einen 
 
 h() = 2 * (( Ziel.x - Kind.x ) + ( Ziel.y - Kind.y ))
 
+## Gefundener Pfad
+
+| n x m  | 0 | 1  | 2 | 3 |
+| --- | --- | --- | --- | --- |
+| 0  | _**3, 2, 2, 3**_ | _**0, 2, 0, 1**_ | _**1, 2, 2, 1**_ | 0, 0, 0, 0 |
+| 1  | 0, 0, 0, 0 | 0, 0, 1, 2 | _**1, 2, 2, 0**_ | _**0, 0, 2, 1**_ |
+| 2  | 0, 0, 2, 1 | 1, 0, 2, 0 | 1, 2, 1, 2 | _**1, 0, 2, 0**_ |
+| 3  | 1, 2, 0, 0 | 1, 2, 0, 1 | 1, 2, 0, 0 | _**1, 4, 4, 1**_ |
+
 ## Quellen
 
 [easy-a-star-pathfinding](https://medium.com/@nicholas.w.swift/easy-a-star-pathfinding-7e6689c7f7b2), Beispiel für A* an
