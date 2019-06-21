@@ -72,15 +72,13 @@ Der A* Algorithmus erklärt mit einem vereinfachten Struktogramm
 
 ### Speziell für Zenji
 
-Es wurden für Zenji kleinere Anpassungen gegenüber einem normalen A* Algorithmus angepasst.
-
 #### Generierung Kinderknoten
 
 TODO Schnellbeschreibung Kinder generieren
 
-#### Heuristik und Wegkosten (f(node) = g(node) + h(node))
+#### Heuristik und Wegkosten (f() = g() + h())
 
-TODO Schnellbeschreibung Heuristik und Wegkosten
+
 
 ## Quellen
 
