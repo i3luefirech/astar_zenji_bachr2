@@ -53,11 +53,11 @@ Die Beispielmap aus dem Projekt (Definition der Tür (N, O, S, W): Blockade, Ein
 Beispiel eines Feldes welches in Position 0 im Norden und im Osten eine Blockade hat, im Süden einen Ausgang und im
 Westen einen Eingang
 
-| | | |
+| w | n<br>s | e |
 | --- | --- | --- |
-|   | 0 |   |
-| 1 |   | 0 |
-|   | 2 |   |
+|     |  0  |     |
+|  1  |     |  0  |
+|     |  2  |     |
 
 Ein Feld besteht aus einem Teil des Röhrensystem, jedes Seite des Feldes ist entweder ein Eingang (1), Ausgang (2) oder
 eine Blockade (0).
